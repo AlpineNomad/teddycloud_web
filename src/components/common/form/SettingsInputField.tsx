@@ -37,8 +37,6 @@ export const SettingsInputField: React.FC<InputFieldProps> = (props) => {
     const validateStatus = meta.touched && meta.error ? "error" : undefined;
 
     let value = fieldValue?.toString();
-    const isTagFilterId = name === "core.tag_filter.content_id";
-    const invalidTagFilterId = isTagFilterId && !/^[0-9a-fA-F]{8}$/.test(value ?? "");
 
     const suffix = [
         overlayed === undefined ? null : (
@@ -60,22 +58,14 @@ export const SettingsInputField: React.FC<InputFieldProps> = (props) => {
 
     return (
         <FormItem
-            help={
-                invalidTagFilterId
-                    ? t("settings.tagFilter.invalidId")
-                    : hasFeedback
-                      ? help
-                      : undefined
-            }
-            validateStatus={invalidTagFilterId ? "error" : validateStatus}
-            extra={isTagFilterId ? t("settings.tagFilter.content_id.description") : undefined}
+            help={hasFeedback ? help : undefined}
+            validateStatus={validateStatus}
             label={<span style={{ textWrap: "auto", lineHeight: "1.2" }}>{label}</span>}
             tooltip={description}
         >
             <Input
                 {...field}
                 value={value}
-                {...(isTagFilterId ? { maxLength: 8, placeholder: "FFFFFFFF" } : {})}
                 onChange={(changeEventHandler) => {
                     SettingsDataHandler.getInstance().changeSetting(
                         name,
