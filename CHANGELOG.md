@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased (AlpineNomad, based on 0.7.0)
+
+- Added global tag-filter controls with validation of the eight hexadecimal rUID filename digits.
+- Added German, English, French and Spanish labels and help for the tag filter.
+
 ## 0.7.0
 
 - First TB2 support (not for daily use! Search for beta testers open: [https://t.me/toniebox_reverse_engineering/74847](https://t.me/toniebox_reverse_engineering/74847))
